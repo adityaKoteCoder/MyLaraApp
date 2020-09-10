@@ -11,6 +11,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/user.css">
     </head>
     <body>
         @yield('content')

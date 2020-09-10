@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/personal', 'PersonalController@index');
+Route::get('/personal', 'PersonalController@index')->middleware('auth');
+Route::post('/personal/{id}', 'PersonalController@show')->middleware('auth');
 Route::get('/personal/{id}', 'PersonalController@show')->middleware('auth');
+Route::delete('/personal/{id}', 'PersonalController@delete')->middleware('auth');
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
