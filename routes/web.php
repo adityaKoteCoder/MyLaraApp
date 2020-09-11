@@ -17,10 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/personal', 'PersonalController@index')->middleware('auth');
-Route::post('/personal/{id}', 'PersonalController@show')->middleware('auth');
-Route::get('/personal/{id}', 'PersonalController@show')->middleware('auth');
-Route::delete('/personal/{id}', 'PersonalController@delete')->middleware('auth');
+Route::get('/personal', 'PersonalController@index')->name('personal.index');
+Route::get('/personal/{id}', 'PersonalController@show')->name('personal.show');
+// Route::delete('/personal//{id}', 'PersonalController@delete')->name('personal.index');
 
 
 

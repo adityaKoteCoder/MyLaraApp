@@ -1,48 +1,36 @@
-@extends('/layouts/layout')
+@extends('layouts.app')
 @section('content')
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+    <div class="flex-center position-ref full-height">
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-                <div class="inpdata">
-                    <p class="text">{{'name'}}</p>
-                    <p class="text">{{'email'}}</p>
-                    <p class="text">{{'password'}}</p>
-                    <button class="Update">Update</button>
-                </div>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
+        @foreach($alldata as $rdata)
                 <div class="pdata">
-                    <label for="fname" class="ptext">Firstname</label>
-                    <input type="text" class="tarea" name="fname">
-
-                    <label for="lanme" class="ptext">Lastname</label>
-                    <input type="text" class="tarea" name="lname">
-
-                    <label for="dob" class="ptext">DOB</label>
-                    <input type="dob" class="tarea" name="dob">
-
+                    <label for="fname" class="ptext">Name</label>
+                    <p class="sdata">{{$rdata->firstname}} {{$rdata->lastname}}</p>
+                    
                     <label for="img" class="ptext">Image</label>
-                    <input type="file" class="tarea" name="img">
-
+                    <p class="sdata">{{$rdata->image}}</p>
+                   
                     <label for="game" class="ptext">Game</label>
-                    <input type="text" class="tarea" name="game">
-
+                    <p class="sdata">{{$rdata->game}}</p>
+        
                     <label for="skill" class="ptext">Skills</label>
-                    <input type="text" class="tarea" name="skill">
+                    <p class="sdata">{{$rdata->skills}}</p>
 
                     <label for="rank" class="ptext">Rank</label>
-                    <input type="text" class="tarea" name="rank">
+                    <p class="sdata">{{$rdata->rank}}</p>
                 </div>
-        </div>
-
-        <a href="/rboards/views">Go to Ranking Boards</a>
+                @endforeach
+                <center><a href="/personal/show">Back</a></center>
  @endsection 
